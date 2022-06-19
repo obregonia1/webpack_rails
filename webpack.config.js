@@ -1,6 +1,6 @@
 const path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
@@ -10,8 +10,7 @@ module.exports = (env, argv) => {
     context: path.resolve(__dirname, 'app/javascript/packs'),
     entry: {
       application: './application.js',
-      'application-stylesheet': './application.sass',
-      hello_vue: './hello_vue.js',
+      // hello_vue: './hello_vue.js',
     },
     output: {
       path: path.resolve(__dirname, 'public/packs'),
@@ -44,7 +43,7 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new VueLoaderPlugin(),
-      new ManifestPlugin(),
+      new WebpackManifestPlugin({ writeToFileEmit: true, useLegacyEmit: true }),
       new MiniCssExtractPlugin({filename: '[name]-[contentHash].css'}),
     ],
   };
