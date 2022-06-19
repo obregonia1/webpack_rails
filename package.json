@@ -2,7 +2,8 @@
   "name": "webpack-rails",
   "private": true,
   "scripts": {
-    "build": "yarn && yarn webpack --mode=production"
+    "build": "yarn && yarn webpack --mode=production",
+    "dev": "yarn webpack-dev-server --mode=development"
   },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
