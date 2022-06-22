@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
     context: path.resolve(__dirname, 'app/javascript/packs'),
     entry: {
       application: './application.js',
-      // hello_vue: './hello_vue.js',
+      test: './test.js',
     },
     output: {
       path: path.resolve(__dirname, 'public/packs'),
@@ -46,5 +46,14 @@ module.exports = (env, argv) => {
       new WebpackManifestPlugin({ writeToFileEmit: true, useLegacyEmit: true }),
       new MiniCssExtractPlugin({filename: '[name]-[contentHash].css'}),
     ],
+    devServer: {
+      host: 'localhost',
+      port: 3035,
+      publicPath: '/packs/',
+      contentBase: path.resolve(__dirname, 'app/javascript'),
+      hot: true,
+      disableHostCheck: true,
+      historyApiFallback: true
+    },
   };
 }
